@@ -1,0 +1,21 @@
+pipeline{
+    agent:any
+    stages{
+       stage{"Git Checkout"}{
+          steps{
+              git credentialsId: "git_credentials", url: "https://github.com/rathodrajeshwar/web.git"
+          
+          }
+       }
+       stage{"Maven Build"}{
+          steps{
+              sh "mvn clean install"
+         
+          }
+       }
+       stage{"deploy-dev"}{
+          steps{
+              sshagent{["tomcat-new"]}{
+              sh """
+                
+                
