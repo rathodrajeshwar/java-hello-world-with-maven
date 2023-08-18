@@ -13,8 +13,5 @@ pipeline{
          
           }
        }
-       stage{"deploy-dev"}{
-          steps{
-              sshagent{["tomcat-new"]}{
-              sh """
-             
+    }
+}
